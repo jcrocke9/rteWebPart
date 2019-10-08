@@ -1,0 +1,14 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/richTextEditor/RichTextEditorWebPart.js",
+      "manifest": "./src/webparts/richTextEditor/RichTextEditorWebPart.manifest.json",
+      "outputPath": "./dist/rich-text-editor-web-part.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "RichTextEditorWebPartStrings": "webparts/richTextEditor/loc/{locale}.js",
+    "ControlStrings": "./../node_modules/@pnp/spfx-controls-react/lib/loc/en-us.js"
+  }
+}

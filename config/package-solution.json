@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "rte-web-part-client-side-solution",
+    "id": "0db3caa8-645e-42b3-a5fd-cb6f5ce6e874",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/rte-web-part.sppkg"
+  }
+}

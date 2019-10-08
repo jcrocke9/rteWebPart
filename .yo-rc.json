@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "onprem",
+    "version": "1.9.1",
+    "libraryName": "rte-web-part",
+    "libraryId": "0db3caa8-645e-42b3-a5fd-cb6f5ce6e874",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}
