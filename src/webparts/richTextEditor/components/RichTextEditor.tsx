@@ -10,7 +10,8 @@ export interface IRichTextEditorProps {
 }
 
 export interface IRichTextEditorState {
-  value: string;
+  value?: string;
+  nowLoad?: boolean;
 }
 
 export interface IAopRichText {
@@ -23,24 +24,28 @@ export default class RichTextEditor extends React.Component<IRichTextEditorProps
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: "",
+      nowLoad: false
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   public render(): React.ReactElement<IRichTextEditorProps> {
+    const { value, nowLoad } = this.state;
     return (
       <div className={styles.richTextEditor} >
         <div className={styles.container}>
           <div className={styles.row}>
             <div className={styles.column}>
-              <RichText
-                value={this.state.value}
-                onChange={this.onChange}
-                className={styles.aopRte}
-                isEditMode={true}
-              />
+              {nowLoad &&
+                <RichText
+                  value={value}
+                  onChange={this.onChange}
+                  className={styles.aopRte}
+                  isEditMode={true}
+                />
+              }
               <p>
                 <a onClick={(e) => this.onSubmit(e)}><PrimaryButton text="Submit" /></a>
               </p>
@@ -53,13 +58,14 @@ export default class RichTextEditor extends React.Component<IRichTextEditorProps
   private componentDidMount(): void {
     sp.web.lists.getByTitle("AOP Projects2").items.getById(1).get()
       .then((item: IAopRichText) => {
-        //this.onChange(item.ProjectOverviewVal);
         this.setState({ value: item.ProjectOverviewVal });
-      });
+      })
+      .then(() => {
+        this.setState({nowLoad: true})
+      })
   }
   private onChange = (newText: string): string => {
     this.setState({ value: newText });
-    console.log(newText);
     return newText;
   }
   private onSubmit = (e: any): void => {
